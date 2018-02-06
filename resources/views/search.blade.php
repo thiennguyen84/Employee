@@ -1,17 +1,7 @@
 @extends('master')
 @section('content')
 <div class="container">
-  <form class="navbar-form navbar-left" action="{{route('search')}}" method="get">
-    <div class="input-group">
-      <input type="text" class="form-control" name="search" placeholder="Search">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-          <i class="ti-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
-	<h2>List Employees</h2>
+	<h2>Tìm thấy {{count($searchs)}} kết quả</h2>
 	<table class="table table-bordered">
     <thead>
       <tr>
@@ -20,12 +10,12 @@
         <th>Email</th>
         <th>Birthday</th>
         <th>Address</th>
-        <th colspan="2" class="add"><div class="btn-group btn-group"><a href="{{route('add')}}" class="btn btn-info">Add</a></div></th>
+        <th colspan="2" class="add"><div class="btn-group btn-group"><a href="{{route('show')}}" class="btn btn-info">show</a></div></th>
       </tr>
     </thead>
     <tbody>
       <?php $dem=0;?>
-    	@foreach ($employees as $value)
+    	@foreach ($searchs as $value)
       <?php $dem++; ?>
       <tr>
         <td>{{$dem}}</td>
@@ -43,6 +33,6 @@
       @endforeach
     </tbody>
   </table>
-  <div class="row">{{$employees->links()}}</div>
+  <div class="row">{{$searchs->links()}}</div>
 </div>
 @endsection
