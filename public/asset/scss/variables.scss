@@ -1,0 +1,82 @@
+/* Reset style default */
+p {
+  &:last-child {
+    margin: 0;
+  }
+}
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+ul, ol {
+  padding: 0;
+  margin: 0;
+  li {
+    list-style-type: none;
+  }
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+/* Extend */
+
+%transition {
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+
+@mixin background($deg) {
+  background: -webkit-linear-gradient($deg, #B4EC51 0%, #429321 100%);
+  background: -o-linear-gradient($deg, #B4EC51 0%, #429321 100%);
+  background: linear-gradient($deg, #B4EC51 0%, #429321 100%);
+}
+
+@mixin scale($scale) {
+  -webkit-transform: scale($scale);
+  -moz-transform: scale($scale);
+  -ms-transform: scale($scale);
+  -o-transform: scale($scale);
+  transform: scale($scale);
+}
+
+/* Font icon css */
+%fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+%themify {
+  display: inline-block;
+  font-family: 'themify';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+
+%font-head{
+  font-size: 48px;
+  font-family: Roboto-light;
+  line-height: 63px;
+}
+
+$green:#8BC34A;
+$white:#FFFFFF;
+$black:#283238;

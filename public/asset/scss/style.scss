@@ -1,0 +1,434 @@
+@import 'variables';
+
+@font-face {
+font-family: Roboto-regular;
+src:url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+font-family: Roboto-italic;
+src:url("../fonts/Roboto-Italic.ttf");
+}
+
+@font-face {
+font-family: Roboto-light;
+src:url("../fonts/Roboto-Light.ttf");
+}
+
+body{
+	margin: 0px;
+	padding:0px;
+	font-family: Roboto-light;
+}
+
+.mb-view{
+	display: none;
+}
+
+.row{
+	margin:0px;
+}
+
+.start-now{
+  width: 225px;
+  height: 50px;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+  @include background(311.2deg);
+  color: $white;
+  font-family: Roboto-regular;
+  font-size: 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  @extend %transition;
+  &:hover{
+   @include background(112.12deg);
+    }
+}
+
+header{
+	background-image: url('../images/banner.jpg');
+	background-repeat: no-repeat;
+	.container-head{
+		margin-top: 41px;
+	.about-us{
+		color: $black;
+		font-family: Roboto-regular;
+		font-size: 12px;
+		letter-spacing: 1px;
+		margin-right: 38px;
+		margin-top: 10px;
+		float: right;
+		}
+	.sign-in{
+		background:none;
+		height: 36px; 
+  	width: 82px;  
+  	border: 2px solid $green;  
+  	border-radius: 100px;
+  	color: $green;  
+  	font-size: 12px;   
+  	letter-spacing: 1px;  
+  	float: right;
+  	&:hover{
+  		background-color: #4A1111;
+			}
+		}
+	}
+	.banner-title{
+		margin-top: 180px;
+		text-align: center;
+	}
+	.icon{
+		font-size: 36px;
+		color: $black;
+		margin-top: 53px;
+		text-align: center;
+	}
+	.text{
+		margin-top: 14px;
+		color: $black;
+		font-size: 36px;
+		line-height: 48px;
+		font-family: Roboto-light;
+		text-align: center;
+	}
+
+	.head-content{
+		color: $black; 
+  	font-family: Roboto-italic;  
+  	font-size: 18px;   
+  	line-height: 24px;
+  	margin-top: 53px;
+  	text-align: center;
+	}
+	.button-head{
+		text-align: center;
+		margin-top: 31px;
+		margin-bottom: 233px;
+	}
+}
+
+.til{
+	box-shadow: 0 15px 35px 0 rgba(0,0,0,0.1);
+	background-color: $white;
+	.til-head{
+		@extend %font-head;
+		margin-top: 100px;
+		.ti-bookmark-alt{
+			font-size: 36px;
+			margin-right: 19px;
+		}
+	}
+	.content-1{
+		font-size: 14px;
+		font-style: italic;
+		line-height: 19px;
+		margin-top: 15px;
+	}
+	.img{
+		text-align:center;
+		margin-top: 100px;
+		img{
+			max-width: 100%;			
+		}
+	}
+	.content-2{
+		font-size: 13px;	
+		line-height: 24px;
+		margin-top: 25px;
+		text-align: justify;
+	}
+	.button-til{
+		margin-top: 30px;
+		margin-bottom: 100px;
+	}
+}
+
+.daily{
+	background-color: $white;
+	box-shadow: 0 15px 35px 0 rgba(0,0,0,0.1);
+	.daily-head{
+		@extend %font-head;
+		margin-top: 100px;
+		.ti-write,.ti-calendar{
+			font-size: 36px;
+			margin-right: 18px;
+		}
+	}
+	.content-1{
+		font-size: 14px;
+		font-style: italic;
+		line-height: 19px;
+		margin-top: 15px;
+	}
+	.content-2{
+		font-size: 13px;	
+		line-height: 24px;
+		margin-top: 25px;
+		text-align: justify;
+	}
+	.dai_img{
+		text-align:center;
+		margin-top: 116px;
+		img{
+			max-width: 100%;
+		}
+	}
+	.button-daily{
+		margin-top: 30px;
+		margin-bottom: 100px;
+	}
+}
+
+.rectangle-3{
+	@include background(315deg);
+	.our-rectangle3{
+		padding-top: 68.75px;
+		padding-bottom: 70px;
+		.rec-group{
+			width: 228px;
+			.number{
+				margin: auto;
+				width: 109.5px;
+				img{
+   				max-width: 100%;
+					padding-bottom: 10.75px;
+				}
+				p{
+					color: $white;
+					text-align: center;
+					font-size: 16px;
+					line-height: 21px;
+					letter-spacing: 1px;
+				}			
+			}
+		}
+	}
+}
+
+.member{
+	background-color: $white;
+	box-shadow: 0 15px 35px 0 rgba(0,0,0,0.1);
+ 	.member-head{
+		@extend %font-head;
+		margin-top: 100px;
+		.ti-user{
+			font-size: 36px;
+			margin-right: 18px;
+		}
+ 	}
+ 	.content-1{
+		font-size: 14px;
+		font-style: italic;
+		line-height: 19px;
+		margin-top: 15px;
+	}
+	.member-content{
+		line-height: 24px;
+		color: $black;
+		text-align: justify;
+		font-size: 13px;
+		padding-left: 0px;
+		.member-detail-1{
+			margin-top: 26px;
+			.ti-check-box{
+				font-size: 18px;
+				color: $green;
+			}
+		}
+		.member-detail-2{
+			margin-top: 17px;	
+			.ti-check-box{
+				font-size: 18px;
+				color: $green;
+			}
+		}
+	}
+	.img{
+		margin-top: 100px;
+		text-align: center;
+		img{
+			max-width: 100%;
+		}
+	}
+	.button-member{
+		margin-top: 30px;
+		margin-bottom: 100px;
+	}
+}
+
+.customer{
+	box-shadow: 0 15px 35px 0 rgba(0,0,0,0.1);
+	background-color: $white;
+	.customer-head{
+		@extend %font-head;
+		margin-top: 100px;
+		.ti-face-smile{
+			font-size: 36px;
+			margin-right: 19px;
+		}
+	}
+	.content-1{
+		font-size: 14px;
+		font-style: italic;
+		line-height: 19px;
+		margin-top: 15px;
+	}
+	.img{
+		margin-top: 100px;
+		text-align:center;
+		img{
+			max-width: 100%;
+		}
+	}
+	.customer-content{
+		line-height: 24px;
+		color: $black;
+		text-align: justify;
+		font-size: 13px;
+		.customer-detail-1{
+			margin-top: 26px;
+			.ti-unlock{
+				font-size: 18px;
+				color: $green;
+			}
+		}
+		.customer-detail-2{
+			margin-top: 17px;	
+			.ti-cup,.ti-stats-up{
+				font-size: 18px;
+				color: $green;
+			}
+		}
+	}
+	.button-customer{
+		margin-bottom: 100px;
+  	margin-top: 30px;
+	}
+}
+
+.our-cus {
+  background-image: url(../images/Rectangle_3.jpg);
+  background-color: rgba(40,50,56,0.9);
+  .head-rec{
+  color: $white; 
+  @extend %font-head;
+  margin-top: 50px;
+  text-align: center;
+	}
+	.owl-carousel{
+		.owl-stage-outer {
+  		height: 155px;
+		}
+		.owl-item{
+  		img{
+  			width: 53%;
+  			padding-top: 10px;
+  			margin: auto;
+			}
+		}
+	}
+	.our-customers {
+  	height: 127px;
+  	margin-top: 39px;
+  	font-family: Roboto-regular; 
+  	.cus-name{
+  		color: $white; 
+  		font-size: 13px;  
+  		text-align: center;
+  		margin-top: 16px;
+  		display: block;
+		}
+		.cus-job{
+  		display: block;
+  		color: $white;
+  		font-size: 10px;
+  		text-align: center;
+  		padding-top: 2px;
+			}
+		.avata {
+ 			@extend %transition;
+ 			&:hover{
+ 				@include scale(1.2);
+ 			}
+ 			&:hover + .cus-name{
+ 				margin-top: 25px;
+ 			}
+		}
+	}
+	.ti-quote-left{
+		font-size: 72px;
+		color: $white;
+		margin-top: 39px;
+	}
+	.tes-text{
+		color: $white; 
+  	font-family: Roboto-light; 
+  	font-size: 18px;
+  	margin-top: 104px;
+  	line-height: 30px;
+  	text-align: justify;
+	}
+  .ti-quote-right{
+		font-size: 72px;
+		color: $white;
+		margin-top: -25px;
+		margin-bottom: 24px;
+	}
+}
+
+footer{
+	margin-left: -2px;
+	border: 1px solid #ECEFF1;
+	font-family: Roboto-regular; 
+	background-color: #39474E;
+	box-shadow: 0 15px 35px 0 rgba(0,0,0,0.1);
+	.row{
+		margin-top: 45px;
+		.col-1{
+			margin-top: -7px;
+			img{
+				width: 96px;
+			}
+		}
+		.col-2{
+			p{
+				color: $green;
+				font-size: 13px;
+				line-height: 18px;
+			}
+			a{
+				font-size: 10px;
+				color: #D0D8DC;
+			}
+		}
+		.col-3{
+			margin-top: 43px;
+			ul{
+				li{
+					float: left;
+					a{
+						color: $green; 
+						font-size: 13px; 
+						padding-left: 0px;
+					}
+					.ti-twitter-alt,.ti-youtube,.ti-linkedin{
+						margin-left: 37px;
+					}
+				}
+			}
+		}
+		.copyright{
+			font-size: 10px;
+			margin-top: -60px;
+			line-height: 13px;
+			color: #D0D8DC;
+			margin-bottom: 57px;
+		}
+	}
+}
+
+
+@import 'responsive';
