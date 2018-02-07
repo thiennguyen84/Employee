@@ -1,6 +1,13 @@
 h2{
   text-align: center;
 }
-.sub,.edit,.delete,.add{
+.head{
+	margin-top: 100px;
+}
+.sub,.edit,.delete,.add,.thanh-cong{
 	text-align: center;
+}
+
+.hapo_img{
+	width: 50px;
 }

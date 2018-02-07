@@ -19,11 +19,11 @@
     <!-- header -->
     @include('header')
 
-  <!-- body -->
+    <!-- body -->
     @yield('content')
 
     <!-- footer -->
-    @include('footer')
+    <!-- @include('footer') -->
      <!-- javascript -->
     <script src="http://localhost:8000/asset/vendors/jquery.min.js"></script>
     <script src="http://localhost:8000/asset/owlcarousel/owl.carousel.js"></script>

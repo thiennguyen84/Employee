@@ -1,7 +1,13 @@
 @extends('master')
 @section('content')
 <div class="container">
-	<h2>Tìm thấy {{count($searchs)}} kết quả</h2>
+	<div class="alert alert-info text-center head">Kết quả cho từ khóa "<strong>{{$name}}</strong>"</div>
+  <hr>
+  @if(count($searchs)==0)
+    <div class="alert alert-danger">
+      <strong>Không có nhân viên nào trong danh sách mà bạn muốn tìm</strong>
+    </div>
+  @endif
 	<table class="table table-bordered">
     <thead>
       <tr>
@@ -10,7 +16,7 @@
         <th>Email</th>
         <th>Birthday</th>
         <th>Address</th>
-        <th colspan="2" class="add"><div class="btn-group btn-group"><a href="{{route('show')}}" class="btn btn-info">show</a></div></th>
+        <th colspan="2" class="add"><div class="btn-group btn-group"><a href="{{route('add')}}" class="btn btn-info"><span class="ti-plus"></span></a></div></th>
       </tr>
     </thead>
     <tbody>
@@ -23,11 +29,11 @@
         <td>{{$value->email}}</td>
         <td>{{$value->birth_day}}</td>
         <td>{{$value->address}}</td>
-        <td><div class="edit"><a href="{{route('edit',$value->id)}}" class="btn btn-info">Edit</a></div></td>
+        <td><div class="edit"><a href="{{route('edit',$value->id)}}" class="btn btn-info"><span class="ti-pencil-alt"></span></a></div></td>
         <td><form action="/task/{{ $value->id }}" method="POST">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
-            <div class="delete"><button class="btn btn-info">Delete</button></div>
+            <div class="delete"><button class="btn btn-danger"><span class="ti-close"></span></button></div>
         </form></td>
       </tr>
       @endforeach

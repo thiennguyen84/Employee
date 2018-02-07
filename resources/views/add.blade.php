@@ -1,13 +1,18 @@
 @extends('master')
 @section('content')
 <div class="container">
-	<h2>Add Employee</h2>
-	<div class="col-lg-2">
-		<div class="btn-group btn-group-justified">
-      		<a href="{{route('show')}}" class="btn btn-primary">Show</a>
-    	</div>
-	</div>
-	<div class="col-lg-6 col-lg-offset-1">
+	<h2 class="head">Add Employee</h2>
+	<hr>
+	@if (count($errors)>0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+	@endif
+	<div class="col-lg-6 col-lg-offset-3">
 		<form action = "{{route('add')}}" method="POST">
 			{{ csrf_field() }}
 			<div class="form-group">
@@ -20,7 +25,7 @@
 	  		</div>
 	  		<div class="form-group">
 	    		<label for="email">Email:</label>
-	    		<input type="email" class="form-control" name= "email" required="">
+	    		<input type="email" class="form-control" name= "email" value="@gmail.com" required="">
 	  		</div>
 	 		<div class="form-group">
 	    		<label for="address">Address:</label>

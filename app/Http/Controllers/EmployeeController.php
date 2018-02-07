@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Employee;
+use Session;
+use Validator;
 
 class EmployeeController extends Controller
 {
     //
     public function show(){
-    	$employees = Employee::paginate(10);	
+    	$employees = DB::table('employees')->orderBy('name')->paginate(10);	
     	return view('index',['employees'=>$employees]);
     }
 
@@ -18,13 +21,19 @@ class EmployeeController extends Controller
     }
 
     public function postAdd(Request $request){
+    	$this->validate($request,[
+    		'email'=>'required|email|unique:employees'
+    	],
+    	[
+    		'email.unique'=>'Email đã có người sử dụng',
+    	]);
     $employee = new Employee();
     $employee->name = $request->name;
     $employee->address = $request->address;
     $employee->birth_day = $request->birthday;
     $employee->email = $request->email;
     $employee->save();
-    return redirect('/show');
+    return redirect('/show')->with('thanhcong','Thêm nhân viên thành công');
     }
 
     public function edit($id){
@@ -33,22 +42,29 @@ class EmployeeController extends Controller
     }
 
     public function postEdit(Request $request,$id){
+    	$this->validate($request,[
+    		'email'=>'required|email|unique:employees'
+    	],
+    	[
+    		'email.unique'=>'Email đã có người sử dụng',
+    	]);
     	$employee = Employee::find($id);
     	$employee->name = $request->name;
    	 	$employee->address = $request->address;
     	$employee->birth_day = $request->birthday;
     	$employee->email = $request->email;
     	$employee->save();
-    	return redirect('/show');
+    	return redirect('/show')->with('thanhcong','Update nhân viên thành công');
     }
 
     public function delete($id){
     	$employee = Employee::find($id)->delete();
-    	return redirect('show');
+    	return redirect('show')->with('thanhcong','Xóa nhân viên thành công');
     }
 
     public function search(Request $request){
-    	$searchs = Employee::where('name','like','%'.$request->search.'%')->paginate(10);
-    	return view('search',['searchs'=>$searchs]);
+    	$name = $request->search;
+    	$searchs = Employee::where('name','like','%'.$name.'%')->orderBy('name')->paginate(10);
+    	return view('search',['searchs'=>$searchs,'name'=>$name]);
     }
 }
