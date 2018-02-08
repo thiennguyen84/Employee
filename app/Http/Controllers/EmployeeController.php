@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Employee;
 use Session;
 use Validator;
+use File;
 
 class EmployeeController extends Controller
 {
@@ -27,13 +28,18 @@ class EmployeeController extends Controller
     	[
     		'email.unique'=>'Email đã có người sử dụng',
     	]);
-    $employee = new Employee();
-    $employee->name = $request->name;
-    $employee->address = $request->address;
-    $employee->birth_day = $request->birthday;
-    $employee->email = $request->email;
-    $employee->save();
-    return redirect('/show')->with('thanhcong','Thêm nhân viên thành công');
+    	$employee = new Employee();
+    	if($request->hasFile('avata')){
+    		$file = $request->avata;
+    		$file->move('img',$file->getClientOriginalName());
+    		$employee->image = $file->getClientOriginalName();
+    	}
+	    $employee->name = $request->name;
+	    $employee->address = $request->address;
+	    $employee->birth_day = $request->birthday;
+	    $employee->email = $request->email;
+	    $employee->save();
+    	return redirect('/show')->with('thanhcong','Thêm nhân viên thành công');
     }
 
     public function edit($id){
@@ -42,13 +48,15 @@ class EmployeeController extends Controller
     }
 
     public function postEdit(Request $request,$id){
-    	$this->validate($request,[
-    		'email'=>'required|email|unique:employees'
-    	],
-    	[
-    		'email.unique'=>'Email đã có người sử dụng',
-    	]);
     	$employee = Employee::find($id);
+    	if($request->hasFile('avata')){
+    		$file1= $employee->image;
+    		File::delete('img/'.$file1);
+    		$file = $request->avata;
+    		$file->move('img',$file->getClientOriginalName());
+    		$employee->image = $file->getClientOriginalName();
+    		$employee->save();
+    	}
     	$employee->name = $request->name;
    	 	$employee->address = $request->address;
     	$employee->birth_day = $request->birthday;
@@ -58,7 +66,10 @@ class EmployeeController extends Controller
     }
 
     public function delete($id){
-    	$employee = Employee::find($id)->delete();
+    	$employee = Employee::find($id);
+    	$file= $employee->image;
+    	File::delete('img/'.$file);
+    	$employee->delete();
     	return redirect('show')->with('thanhcong','Xóa nhân viên thành công');
     }
 

@@ -13,7 +13,7 @@
     </div>
 	@endif
 	<div class="col-lg-6 col-lg-offset-3">
-		<form action = "{{route('add')}}" method="POST">
+		<form action = "{{route('add')}}" method="POST" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<div class="form-group">
 	    		<label for="name">Name:</label>
@@ -31,6 +31,10 @@
 	    		<label for="address">Address:</label>
 	    		<input type="text" class="form-control" name= "address" required="">
 	  		</div>
+	  		<div class="upload-btn-wrapper">
+  				<button class="btn-upload">Upload avata</button>
+  				<input type="file" name="avata" />
+			</div>
 	  		<div class="sub">
 	  			<button type="submit" class="btn btn-default">Add</button>
 	  			<button type="reset" class="btn btn-default">Reset</button>
