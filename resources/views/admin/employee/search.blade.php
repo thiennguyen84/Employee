@@ -28,7 +28,7 @@
       <tr>
         <td>{{$temp++}}</td>
         <td>{{$value->name}}</td>
-        <td><img src="http://localhost:8000/img/{{$value->image}}" class="name-search" alt=""></td>
+        <td><img src="{!! asset('img/'.$value['image']) !!}" class="name-search" alt=""></td>
         <td>{{$value->email}}</td>
         <td>{{$value->birthday}}</td>
         <td>{{$value->address}}</td>
