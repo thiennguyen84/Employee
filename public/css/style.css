@@ -4,11 +4,11 @@ h2{
 .head{
 	margin-top: 80px;
 }
-.sub,.edit,.delete,.add,.thanh-cong{
+.sub,.edit,.delete,.add,.thanh-cong,.show{
 	text-align: center;
 }
 
-.hapo_img{
+.hapo-img{
 	width: 50px;
 }
 
@@ -16,14 +16,15 @@ h2{
 	
 }
 
-.avata_name{
+.avata-name{
 	text-align: center;
 	font-size: 30px;
 }
 
-.avata_img{
+.avata-img{
 	max-height: 100%;
 	max-width: 100%;
+  height:400px;
 }
 
 .upload-btn-wrapper {
@@ -56,4 +57,13 @@ h2{
 
 .btn-add{
   margin-top: 8px;
+}
+
+.name-search{
+  width:40px;
+  height:35px;
+}
+
+.show-head{
+  margin-right: 10px;
 }

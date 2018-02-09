@@ -11,41 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::resource('employs','EmployController');
 
-Route::get('show',[
-	'as'=>'show',
-	'uses'=>'EmployeeController@show'
-]);
+Route::resource('employs', 'EmployController', ['only' => [
+    'index','create', 'store', 'destroy','show'
+]]);
 
-Route::get('add',[
-	'as'=>'add',
-	'uses'=>'EmployeeController@add'
-]);
-
-Route::post('add',[
-	'as'=>'add',
-	'uses'=>'EmployeeController@postAdd'
-]);
-
-Route::get('edit/{id}',[
-	'as'=>'edit',
-	'uses'=>'EmployeeController@edit'
-]);
+Route::resource('employs', 'EmployController', ['except' => [
+	'update'
+]]);
 
 Route::post('edit/{id}',[
 	'as'=>'edit',
-	'uses'=>'EmployeeController@postEdit'
-]);
-
-Route::delete('/task/{id}',[
-	'as'=>'delete',
-	'uses'=>'EmployeeController@delete'
+	'uses'=>'EmployController@update'
 ]);
 
 Route::get('search',[
 	'as'=>'search',
-	'uses'=>'EmployeeController@search'
+	'uses'=>'EmployController@search'
 ]);
