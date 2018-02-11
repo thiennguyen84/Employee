@@ -6,5 +6,9 @@
         <ul class="nav navbar-nav">
             <li><a href="{{route('employs.index')}}"><span class="ti-home"></span> Home</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+      		<li><a href="#"><span class="ti-user"></span> Sign Up</a></li>
+      		<li><a href="#"><span class="ti-shift-right"></span> Login</a></li>
+    	</ul>
     </div>
 </nav>

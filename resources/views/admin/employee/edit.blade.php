@@ -1,14 +1,18 @@
-@extends('master')
+@extends('layouts.app')
+@section('title')
+<title>edit</title>
+@endsection
 @section('content')
 <div class="container">
-	<h2 class="head">Employee "<strong class="">{{$employee->name}}</strong>"</h2>
+	<h2 class="head">Employee "<strong class="">{{ $employee->name }}</strong>"</h2>
 	<hr>
 	<div class="row">
-		<form action = "{{route('edit',$employee->id)}}" method="POST" enctype="multipart/form-data">
+		<form action = "{{ route('employs.update',$employee->id) }}" method="POST" enctype="multipart/form-data">
+				{{ method_field('PUT') }}
 				{{ csrf_field() }}
 			<div class="col-lg-6">
 				<div class="avata-name">
-				 	Avata
+				 	Avatar
 				</div>
 				<div class="avata text-center">
 					<img src="{!! asset('img/'.$employee['image']) !!}" class="avata-img img-circle" alt="">
@@ -17,29 +21,29 @@
 			<div class="col-lg-6">
 				<div class="form-group">
 		    		<label for="name">Name:</label>
-		    		<input type="text" class="form-control" name= "name" value="{{$employee->name}}" required="">
+		    		<input type="text" class="form-control" name= "name" value="{{ $employee->name }}" required="">
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="birthday">Birthday:</label>
-		    		<input type="text" class="form-control" name= "birthday" value="{{$employee->birthday}}">
+		    		<input type="text" class="form-control" name= "birthday" value="{{ $employee->birthday }}" required="">
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="email">Email:</label>
-		    		<input type="email" class="form-control" name= "email" value="{{$employee->email}}" readonly="">
+		    		<input type="email" class="form-control" name= "email" value="{{ $employee->email }}" readonly="">
 		  		</div>
 		 		<div class="form-group">
 		    		<label for="address">Address:</label>
-		    		<input type="text" class="form-control" name= "address" value="{{$employee->address}}" required="">
+		    		<input type="text" class="form-control" name= "address" value="{{ $employee->address }}" required="">
 		  		</div>
 		  		<div class="upload-btn-wrapper">
-  					<button class="btn-upload">Change avata</button>
-  					<input type="file" name="avata" />
+  					<button class="btn-upload">Change avatar</button>
+  					<input type="file" name="avatar" />
 				</div>
-				@if ($errors->has('avata'))
+				@if ($errors->has('avatar'))
 	                <div class="alert alert-danger">
 	                    <ul>
-	                        @foreach ($errors->get('avata') as $avata)
-	                            <li>{{$avata}}</li>
+	                        @foreach ($errors->get('avatar') as $avatar)
+	                            <li>{{ $avatar }}</li>
 	                        @endforeach
 	                    </ul>
 	                </div>

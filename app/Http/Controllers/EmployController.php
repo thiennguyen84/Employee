@@ -18,11 +18,11 @@ class EmployController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
     {
-        //
-        $employees = Employee::orderBy('name')->paginate(10);   
-        return view('admin.employee.index',['employees'=>$employees]);
+        $name = $request->search;
+        $employees = Employee::where('name','like','%'.$name.'%')->orwhere('email','like','%'.$name.'%')->orderBy('name')->paginate(config('app.paginate'));   
+        return view('admin.employee.index',['employees'=>$employees,'name'=>$name]);
     }
 
     /**
@@ -46,8 +46,8 @@ class EmployController extends Controller
     {
         //
         $employee = new Employee();
-        if($request->hasFile('avata')){
-            $file = $request->avata;
+        if($request->hasFile('avatar')){
+            $file = $request->avatar;
             $file->move('img',$file->getClientOriginalName());
             $employee->image = $file->getClientOriginalName();
         }
@@ -56,7 +56,7 @@ class EmployController extends Controller
         $employee->birthday = $request->birthday;
         $employee->email = $request->email;
         $employee->save();
-        return redirect('/employs')->with('thanhcong','Thêm nhân viên thành công');
+        return redirect()->route('employs.index')->with('thanhcong',trans_choice('message.thanhcong',1));
     }
 
     /**
@@ -96,10 +96,10 @@ class EmployController extends Controller
     {
         //
         $employee = Employee::findOrFail($id);
-        if($request->hasFile('avata')){
+        if($request->hasFile('avatar')){
             $file1= $employee->image;
             File::delete('img/'.$file1);
-            $file = $request->avata;
+            $file = $request->avatar;
             $file->move('img',$file->getClientOriginalName());
             $employee->image = $file->getClientOriginalName();
             $employee->save();
@@ -109,7 +109,7 @@ class EmployController extends Controller
         $employee->birthday = $request->birthday;
         $employee->email = $request->email;
         $employee->save();
-        return redirect()->route('employs.show',$employee->id)->with('thanhcong','Update nhân viên thành công');
+        return redirect()->route('employs.show',$employee->id)->with('thanhcong',trans_choice('message.thanhcong',2));
     }
 
     /**
@@ -125,12 +125,6 @@ class EmployController extends Controller
         $file= $employee->image;
         File::delete('img/'.$file);
         $employee->delete();
-        return redirect('employs')->with('thanhcong','Xóa nhân viên thành công');
-    }
-
-    public function search(Request $request){
-        $name = $request->search;
-        $searchs = Employee::where('name','like','%'.$name.'%')->orderBy('name')->paginate(10);
-        return view('admin.employee.search',['searchs'=>$searchs,'name'=>$name]);
+        return redirect()->route('employs.index')->with('thanhcong',trans_choice('message.thanhcong',3));
     }
 }

@@ -25,19 +25,19 @@ class StoreEmployee extends FormRequest
     {
         return [
             //
-            'email'=>'required|email|unique:employees',
-            'avata'=>'image|required'
+            'email'=>'required|email|unique:employees|regex:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}/',
+            'avatar'=>'image'
         ];
     }
 
     public function messages()
     {
         return [
-            'email.unique' => 'Email đã có người sử dụng',
-            'email.required'=>'Chưa nhập email',
-            'email.email'=>'Không đúng định dạng email',
-            'avata.image' => 'Avata không phải ảnh',
-            'avata.required'=> 'Chưa chọn avata'
+            'email.unique' => 'Email has already been taken',
+            'email.regex'=>'Email: format is invalid',
+            'email.required'=>'Email field is required',
+            'email.email'=>'Email must be a valid email address',
+            'avatar.image' => 'Avatar must be an image',
         ];
     }
 }

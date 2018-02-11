@@ -11,22 +11,7 @@
 |
 */
 
-// Route::resource('employs','EmployController');
+Route::resource('employs','EmployController');
+Auth::routes();
 
-Route::resource('employs', 'EmployController', ['only' => [
-    'index','create', 'store', 'destroy','show'
-]]);
-
-Route::resource('employs', 'EmployController', ['except' => [
-	'update'
-]]);
-
-Route::post('edit/{id}',[
-	'as'=>'edit',
-	'uses'=>'EmployController@update'
-]);
-
-Route::get('search',[
-	'as'=>'search',
-	'uses'=>'EmployController@search'
-]);
+Route::get('/home', 'HomeController@index')->name('home');

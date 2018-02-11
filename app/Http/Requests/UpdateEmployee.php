@@ -25,14 +25,14 @@ class UpdateEmployee extends FormRequest
     {
         return [
             //
-            'avata'=>'image'
+            'avatar'=>'image',
         ];
     }
 
     public function messages()
     {
         return [
-            'avata.image' => 'Avata không phải ảnh',
+            'avatar.image' => 'Avatar must be an image',
         ];
     }
 }
