@@ -228,4 +228,6 @@ return [
 
     ],
 
+    'paginate' => 10,
+
 ];

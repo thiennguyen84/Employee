@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::resource('employs','EmployController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
